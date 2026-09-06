@@ -1,0 +1,413 @@
+/* ---------------------------------------------------------------
+   Design tokens
+   Palette: warm paper background, deep ink text, moss-green primary
+   accent (the "trust" color for a local-commerce review platform),
+   and a muted gold reserved only for stars/ratings so it stays a
+   meaningful signal rather than decoration.
+------------------------------------------------------------------ */
+:root {
+  --paper: #FAF6EE;
+  --ink: #23291F;
+  --ink-soft: #565C4F;
+  --moss: #3F6B4F;
+  --moss-dark: #2E5039;
+  --moss-tint: #E4EBE2;
+  --gold: #C9972F;
+  --line: #DCD5C4;
+  --white: #FFFFFF;
+  --danger: #A8402F;
+  --danger-tint: #F6E4DF;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.4em;
+}
+
+h1 { font-size: 1.9rem; letter-spacing: -0.01em; }
+h2.section-heading { font-size: 1.25rem; margin-top: 2.5rem; }
+
+a { color: var(--moss-dark); }
+
+/* ---------------- Layout ---------------- */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--white);
+}
+
+.navbar-brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  font-size: 0.92rem;
+}
+
+.navbar-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.navbar-links a:hover { color: var(--moss-dark); }
+
+.navbar-user {
+  color: var(--ink-soft);
+  border-left: 1px solid var(--line);
+  padding-left: 1.2rem;
+}
+
+.app-main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.page-subtitle {
+  color: var(--ink-soft);
+  margin-top: -0.3rem;
+  margin-bottom: 1.6rem;
+}
+
+.page-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.page-narrow {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2.5rem 0.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+/* ---------------- Auth pages ---------------- */
+
+.auth-page {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2.4rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-subtitle {
+  color: var(--ink-soft);
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+}
+
+.auth-footer {
+  margin-top: 1.4rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ---------------- Forms ---------------- */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  resize: vertical;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--moss);
+  outline-offset: 1px;
+  border-color: var(--moss);
+}
+
+.field-hint {
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  opacity: 0.85;
+}
+
+/* ---------------- Buttons ---------------- */
+
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--moss);
+  color: var(--white);
+}
+.btn-primary:hover { background: var(--moss-dark); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--moss-dark);
+  border-color: var(--moss);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-soft);
+  border-color: var(--line);
+}
+
+/* ---------------- Alerts ---------------- */
+
+.alert {
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+.alert-error {
+  background: var(--danger-tint);
+  color: var(--danger);
+}
+
+.alert-success {
+  background: var(--moss-tint);
+  color: var(--moss-dark);
+}
+
+/* ---------------- Stat cards ---------------- */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  color: var(--moss-dark);
+}
+
+.stat-label {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+/* ---------------- Filter bar ---------------- */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+}
+
+.filter-bar input, .filter-bar select {
+  flex: 1 1 200px;
+}
+
+/* ---------------- Tables ---------------- */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.data-table th, .data-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.data-table th {
+  color: var(--ink-soft);
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  background: var(--moss-tint);
+}
+
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background: rgba(63, 107, 79, 0.04); }
+
+.rating-figure {
+  margin-left: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.saving-indicator {
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.empty-state {
+  color: var(--ink-soft);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+/* ---------------- Star rating ---------------- */
+
+.star-rating {
+  display: inline-flex;
+  gap: 0.1rem;
+}
+
+.star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--line);
+  padding: 0.1rem;
+}
+
+.star-rating-sm .star { font-size: 1rem; }
+
+.star-filled { color: var(--gold); }
+
+.star:disabled { cursor: default; }
+
+/* ---------------- Badges ---------------- */
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  background: var(--moss-tint);
+  color: var(--moss-dark);
+}
+
+.badge-admin { background: #EFE3F6; color: #6A3F94; }
+.badge-store_owner { background: #FCEFD6; color: #8A5B0F; }
+
+/* ---------------- Detail card ---------------- */
+
+.detail-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.4rem 1.6rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+.detail-row:last-child { border-bottom: none; }
+.detail-row span:first-child { color: var(--ink-soft); }
+
+@media (max-width: 640px) {
+  .navbar { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .navbar-links { flex-wrap: wrap; gap: 0.8rem; }
+}
